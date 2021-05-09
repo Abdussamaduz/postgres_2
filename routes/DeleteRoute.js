@@ -5,10 +5,14 @@ router.get('/', async (req, res) => {
     let users = await Users.getUser()
     
     // console.log(users);
-    users.forEach(element => {
-        console.log(element);
-    });
-    res.render('delete')
+    console.log(users);
+    res.redirect('/')
+})
+
+router.get('/delete/:id', async(req, res) => {
+    const {id} = req.params;
+    await Users.delUser(id)
+    res.redirect('/')
 })
 
 module.exports = {

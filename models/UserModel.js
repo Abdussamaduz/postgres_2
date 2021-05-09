@@ -16,6 +16,11 @@ class UserModel {
         let { rows } = await Database.query(`DELETE FROM users WHERE user_id='${id}'`)
         return rows
     }
+
+    async editUser (name, age, id) {
+        let { rows } = await Database.query(`UPDATE users SET user_name='${name}' AND user_age=${age} WHERE user_id=${id} `)
+        return rows
+    }
 }
 
 module.exports = new UserModel()
