@@ -20,6 +20,13 @@ router.get('/delete/:id', async(req, res) => {
     res.redirect('/')
 })
 
+router.post('/update/:id', async (req, res) => {
+    const { id } = req.params;
+    console.log(id);
+    await Users.editUser(id);
+    res.redirect('/');
+})
+
 router.post('/', async (req, res) => {
     // console.log(req.body);
     await Users.createUser(req?.body?.name, req?.body?.age, req?.body?.referal)
